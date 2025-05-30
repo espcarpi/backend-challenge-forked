@@ -1,6 +1,12 @@
-name: "example_workflow"
+name: 'example_workflow'
 steps:
-  - taskType: "analysis"
+  - taskType: 'analysis'
     stepNumber: 1
-  - taskType: "notification"
+  - taskType: 'reportGeneration'
+    stepNumber: 4
+    dependencies: ['analysis', 'polygonArea', 'notification']
+  - taskType: 'polygonArea'
     stepNumber: 2
+  - taskType: 'notification'
+    stepNumber: 3
+    dependencies: ['analysis', 'polygonArea']

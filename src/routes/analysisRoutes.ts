@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
 
     try {
         const workflow = await workflowFactory.createWorkflowFromYAML(workflowFile, clientId, JSON.stringify(geoJson));
-
+        console.log(workflow)
         res.status(202).json({
             workflowId: workflow.workflowId,
             message: 'Workflow created and tasks queued from YAML definition.'
