@@ -176,6 +176,7 @@ The following tasks must be completed to enhance the backend system:
 ### **How to test the new implementations**
 
 1. **Use Postman to import the calls for the API**
+   
    In this repository there is a file called "OSapiens_challenge" which is a JSON file to be imported in Postman as a collection to be able to test each functionality implemented.
 
 2. **Test succesful results**
