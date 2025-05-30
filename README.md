@@ -182,6 +182,7 @@ The following tasks must be completed to enhance the backend system:
 2. **Test succesful results**
    - Run the server locally in the port 3000 (See in this file how to do it)
    - Call `Create workflow` -> This will return an ID to be used in the other two endpoints created. Please copy the id and paste it in the next calls, in the id query param section
+     
         Return expected:
       ```
       {
@@ -190,6 +191,7 @@ The following tasks must be completed to enhance the backend system:
       }
       ```
    - Call `Get workflow status` -> This will return the status of the workflow. When the status in completed, we can continue to the next step
+     
      Return expected:
       ```
       {
@@ -200,6 +202,7 @@ The following tasks must be completed to enhance the backend system:
       }
       ```
    - Call `Get workflow results` -> This will return the results of all the tasks created under the workflow used (`example_workflow`)
+
      Return expected:
       ```
       {
