@@ -167,10 +167,6 @@ src
    - `TaskRunner` runs the corresponding job (e.g., data analysis, email notification) and updates states.
    - Once tasks are done, the workflow is marked as `completed`.
 
-### **Coding Challenge Tasks for the Interviewee**
-
-The following tasks must be completed to enhance the backend system:
-
 ---
 
 ### **How to test the new implementations**
