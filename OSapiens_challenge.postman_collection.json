@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "7f75643d-0d27-45ed-81d2-4261061d8d2d",
+		"name": "OSapiens Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "6077388"
+	},
+	"item": [
+		{
+			"name": "Create Workflow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n \"clientId\": \"client123\",\n \"geoJson\": {\n     \"type\": \"Polygon\",\n     \"coordinates\": [\n         [\n             [\n                 -63.624885020050996,\n                 -10.311050368263523\n             ],\n             [\n                 -63.624885020050996,\n                 -10.367865108370523\n             ],\n             [\n                 -63.61278302732815,\n                 -10.367865108370523\n             ],\n             [\n                 -63.61278302732815,\n                 -10.311050368263523\n             ],\n             [\n                 -63.624885020050996,\n                 -10.311050368263523\n             ]\n         ]\n     ]\n }\n }"
+				},
+				"url": "http://localhost:3000/analysis"
+			},
+			"response": []
+		},
+		{
+			"name": "Get workflow results",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/workflow/:id/results",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"workflow",
+						":id",
+						"results"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "91f7c019-0b49-4e7c-a71b-4fa3987fb784"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get workflow status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/workflow/:id/status",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"workflow",
+						":id",
+						"status"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "324a764b-a96d-4499-8d0a-258ee390baca"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
