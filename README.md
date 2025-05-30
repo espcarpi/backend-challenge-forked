@@ -182,8 +182,94 @@ The following tasks must be completed to enhance the backend system:
 2. **Test succesful results**
    - Run the server locally in the port 3000 (See in this file how to do it)
    - Call `Create workflow` -> This will return an ID to be used in the other two endpoints created. Please copy the id and paste it in the next calls, in the id query param section
+        Return expected:
+      ```
+      {
+          "workflowId": "60ee82c7-8850-464f-b791-88af3a44cd60",
+          "message": "Workflow created and tasks queued from YAML definition."
+      }
+      ```
    - Call `Get workflow status` -> This will return the status of the workflow. When the status in completed, we can continue to the next step
+     Return expected:
+      ```
+      {
+          "workflowId": "60ee82c7-8850-464f-b791-88af3a44cd60",
+          "status": "completed",
+          "completedTasks": 4,
+          "totalTasks": 4
+      }
+      ```
    - Call `Get workflow results` -> This will return the results of all the tasks created under the workflow used (`example_workflow`)
+     Return expected:
+      ```
+      {
+          "workflowId": "60ee82c7-8850-464f-b791-88af3a44cd60",
+          "status": "completed",
+          "finalResult": [
+              "Brazil",
+              8363324.273315565,
+              {},
+              {
+                  "workflowId": "60ee82c7-8850-464f-b791-88af3a44cd60",
+                  "tasks": [
+                      {
+                          "taskId": "2855abb0-84d1-479e-a200-faa3a3f62c0d",
+                          "type": "analysis",
+                          "output": "Brazil"
+                      },
+                      {
+                          "taskId": "a5f0166e-ba9f-4e45-9d6e-6f5fbacae290",
+                          "type": "polygonArea",
+                          "output": "8363324.273315565"
+                      },
+                      {
+                          "taskId": "149b4eaa-80f8-47e9-a89f-fcae83e705cf",
+                          "type": "notification",
+                          "output": "{}"
+                      }
+                  ],
+                  "finalReport": {
+                      "2855abb0-84d1-479e-a200-faa3a3f62c0d": {
+                          "taskId": "2855abb0-84d1-479e-a200-faa3a3f62c0d",
+                          "clientId": "client123",
+                          "geoJson": "{\"type\":\"Polygon\",\"coordinates\":[[[-63.624885020050996,-10.311050368263523],[-63.624885020050996,-10.367865108370523],[-63.61278302732815,-10.367865108370523],[-63.61278302732815,-10.311050368263523],[-63.624885020050996,-10.311050368263523]]]}",
+                          "status": "completed",
+                          "progress": null,
+                          "resultId": "509d66f1-5333-4a4e-8269-893b988592c0",
+                          "taskType": "analysis",
+                          "dependencies": null,
+                          "stepNumber": 1,
+                          "output": "Brazil"
+                      },
+                      "a5f0166e-ba9f-4e45-9d6e-6f5fbacae290": {
+                          "taskId": "a5f0166e-ba9f-4e45-9d6e-6f5fbacae290",
+                          "clientId": "client123",
+                          "geoJson": "{\"type\":\"Polygon\",\"coordinates\":[[[-63.624885020050996,-10.311050368263523],[-63.624885020050996,-10.367865108370523],[-63.61278302732815,-10.367865108370523],[-63.61278302732815,-10.311050368263523],[-63.624885020050996,-10.311050368263523]]]}",
+                          "status": "completed",
+                          "progress": null,
+                          "resultId": "55d537af-cc61-41ea-8b45-e73e6aef8874",
+                          "taskType": "polygonArea",
+                          "dependencies": null,
+                          "stepNumber": 2,
+                          "output": "8363324.273315565"
+                      },
+                      "149b4eaa-80f8-47e9-a89f-fcae83e705cf": {
+                          "taskId": "149b4eaa-80f8-47e9-a89f-fcae83e705cf",
+                          "clientId": "client123",
+                          "geoJson": "{\"type\":\"Polygon\",\"coordinates\":[[[-63.624885020050996,-10.311050368263523],[-63.624885020050996,-10.367865108370523],[-63.61278302732815,-10.367865108370523],[-63.61278302732815,-10.311050368263523],[-63.624885020050996,-10.311050368263523]]]}",
+                          "status": "completed",
+                          "progress": null,
+                          "resultId": "205dcdc5-9033-4457-bf91-26b8cdd990f8",
+                          "taskType": "notification",
+                          "dependencies": "analysis,polygonArea",
+                          "stepNumber": 3,
+                          "output": "{}"
+                      }
+                  }
+              }
+          ]
+      }
+      ```
 
 **_Note:_** Report Notification has been develop as a task that could be waiting and taking the result from its dependencies. If there is no report Notification task in the workflow, it will not be automatically generated. This gives the user more room to be reporting whatever it needs.
 
